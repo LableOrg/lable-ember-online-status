@@ -34,7 +34,6 @@ export default Ember.Service.extend({
         var xhr = new XMLHttpRequest();
         xhr.onreadystatechange = function() {
           if (xhr.readyState === 4) {
-            console.log('readyState [' + xhr.status + '] ' + new Date().getTime());
             if (xhr.status === 0) {
               _this.set('isOnline', false);
             } else {
@@ -44,7 +43,7 @@ export default Ember.Service.extend({
         };
         xhr.open("GET", 'ajaxtest?rand='+new Date().getTime());
         xhr.send();
-      }, 3000);
+      }, 5000);
     }
   }),
   
