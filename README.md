@@ -1,26 +1,30 @@
 
 # Lable-ember-online-status
 
-This README outlines the details of collaborating on this Ember addon.
+This Ember CLI add-on adds a service to keep track of the network status.
 
-## Installation
+The addon makes use of the online and offline events as well as navigator.onLine. In case of browsers that don't support this or have an alternative way to interpret it (like Firefox), the addon tries to make a request for a dummy file at a certain interval to check online connection instead.
 
-* `git clone` this repository
-* `npm install`
-* `bower install`
+## Usage
 
-## Running
+In a route, controller of component:
 
-* `ember server`
-* Visit your app at http://localhost:4200.
+`this.get('onlineStatus.isOnline')`
 
-## Running Tests
+In a template:
 
-* `ember test`
-* `ember test --server`
+`onlineStatus.isOnline`
 
-## Building
+## Browser support
 
-* `ember build`
+Supported:
+* Chrome 43.0 (windows)
+* Firefox 39.0 (windows)
+* Firefox 38.0 (android)
+* Internet Explorer 11.0 (windows)
+* Safari iOS (ipad 2 mini)
 
-For more information on using ember-cli, visit [http://www.ember-cli.com/](http://www.ember-cli.com/).
+Not suported:
+* Chrome (ipad 2 mini)
+
+For more information on browser support: http://caniuse.com/#feat=online-status
