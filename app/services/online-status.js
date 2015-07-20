@@ -1,0 +1,1 @@
+export { default } from 'lable-ember-online-status/services/online-status';
