@@ -3,6 +3,7 @@ import Ember from 'ember';
 export default Ember.Service.extend({
   
   isOnline: true,
+  allowPing: true,
   
   setInternetStatusListener: Ember.on('init', function() {
     var _this = this;
@@ -28,9 +29,14 @@ export default Ember.Service.extend({
       $(window).bind('offline', onStatusChange);
 
       this.onStatusChange();
-    } else {
+    } else if (this.get('allowPing')) {
       // Alternatively, send a favicon request periodically.
-      window.setInterval(function() {
+      var intVal = window.setInterval(function() {
+        if (!_this.get('allowPing')) {
+          clearInterval(intVal);
+          return;
+        }
+        
         var xhr = new XMLHttpRequest();
         xhr.onreadystatechange = function() {
           if (xhr.readyState === 4) {
